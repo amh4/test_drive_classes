@@ -32,4 +32,22 @@ describe "DiaryEntry Class" do
     chunk = new_entry.reading_chunk(2,1)
    expect(chunk).to eq "three"
   end
+
+  it "starts over when it has gone through words" do
+    new_entry = DiaryEntry.new("Lorem", "One two three") 
+    new_entry.reading_chunk(2,1)
+    new_entry.reading_chunk(2,1)
+    chunk = new_entry.reading_chunk(2,1)
+   expect(chunk).to eq "One two"
+  end
+
+  it "starts over when it has gone through words" do
+    new_entry = DiaryEntry.new("Lorem", "One two three") 
+    new_entry.reading_chunk(2,1)
+    new_entry.reading_chunk(1,1)
+    chunk = new_entry.reading_chunk(2,1)
+   expect(chunk).to eq "One two"
+  end
+
+
 end
